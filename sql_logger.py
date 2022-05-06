@@ -74,3 +74,19 @@ class SQL_data_logger():
         except Error as e:
             print(" error ",e)
 
+    def access_data(self,table_name):
+        """ see how many cups have been detected by the device in total today
+        :param conn: Connection object
+        :param create_table_sql: a CREATE TABLE statement
+        :return:
+        """
+        c = self.conn.cursor()
+
+        sqlite_select_query = """SELECT * from """ + table_name
+        c.execute(sqlite_select_query)
+        records = c.fetchall()
+        total = 0
+        for row in records:
+            if(row[0] == date.today().strftime("%m%d%y") and row[2] > 0):
+                total += 1
+
