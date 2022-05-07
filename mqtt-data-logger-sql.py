@@ -31,8 +31,8 @@ numcups = 0
 cumulative = 0
 
 # Twilio setup
-account_sid = 'ACa31b1e31398bef0380b3289f8dba2bc5'
-auth_token = 'ddf64d8484f7f566c2efa92ddac8f6d6'
+account_sid = os.environ['TWILIO_SID']
+auth_token = os.environ['TWILIO_AUTH_TOKEN']
 
 #callbacks -all others define in functions module
 def on_connect(client, userdata, flags, rc):
