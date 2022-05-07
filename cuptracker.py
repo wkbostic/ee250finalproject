@@ -84,24 +84,21 @@ if __name__ == '__main__':
     camera = PiCamera()
     camera.resolution = (1024, 768)
     camera.start_preview()
+    count = 0
     while True:
-        time.sleep(60*delaytime)
+        time.sleep(3)
         # Take a burst of 5 photos and find average number of cups
-        cupcounter = 0
-        for i in range(0,5):
-            time.sleep(2)
-            camera.capture('im{}.jpg'.format(i))
-            frame = cv.imread(os.getcwd() + '\\im.jpg')
-            if frame is None:
-                print('--(!) No captured frame -- Break!')
-                break
-            cupcounter += detectAndDisplay(frame)
-        cupcounter = round(a/5)
+        time.sleep(2)
+        camera.capture('im{}.jpg'.format(i))
+        frame = cv.imread(os.getcwd() + '\\im.jpg')
+        if frame is None:
+            print('--(!) No captured frame -- Break!')
+            break
+        cupcounter = detectAndDisplay(frame)
+        count = count + 1
         # Record number on 
         client.publish("vtho/cups", cupcounter)
-        dweepy.dweet_for('testthing', {'numcups': cupcounter})
-        # If a nonzero amount of cups is detected, change delaytime to 3 min, otherwise keep it at 15 min
-        if(a > 0):
-            delaytime = 3
+        if (count > 3):
+            dweepy.dweet_for('testthing', {'numcups': 1})
         else:
-            delaytime = 15
+            dweepy.dweet_for('testthing', {'numcups': 0})

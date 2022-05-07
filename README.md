@@ -1,6 +1,8 @@
 # ee250finalproject
 Names: Kristian Vu Bostic <wbostic@usc.edu>, Vy Ho <vtho@usc.edu>, Nika Shroff <nikashro@usc.edu> 
 
+Repository link: https://github.com/wkbostic/ee250finalproject.git
+
 Video demo: 
 	Demo run on computer: https://drive.google.com/file/d/13cG4oClyolC7JFaKpIJ3FGQwhRPHUBrl/view?usp=sharing
 		Shows cup being tracked in camera view, freeboard sparkline showing number of cups, and number of cups being
@@ -14,5 +16,5 @@ Either run cuptracker.py on RPI and mqtt-data-logger-sql.py on computer or cuptr
 both on computer, in separate terminals. 
 
 External libraries: 
-	Python libraries: sqlite3, paho.mqtt.client, twilio, Raspicam, OpenCV, dweepy
+	Python libraries: sqlite3, paho.mqtt.client, twilio, Raspicam, OpenCV, dweepy, Bing image crawler
 	External programs: Cascade Trainer GUI (https://amin-ahmadi.com/cascade-trainer-gui/)
